@@ -1,0 +1,28 @@
+{
+  "name": "04 - Taxonomy Generation + Human Lock",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Taxonomy Stage\n\n**Purpose:** Propose a closed set of theme clusters, then require a human to lock it before anything downstream can reference it.\n\n**TODO:**\n1. LLM node A + LLM node B (two models/providers): each brainstorms candidate themes from titles/abstracts (optionally seeded with an embedding-based clustering signal from Qdrant — advisory only).\n2. Code node: merge + dedupe proposed themes into a single candidate list.\n3. Wait node (HUMAN GATE): present the candidate taxonomy; pause until a human approves/edits it.\n4. Postgres node: insert into `clusters`, set `locked = true` only after approval.\n\nNo document may be classified (Stage 05) against an unlocked taxonomy.",
+        "height": 420,
+        "width": 500
+      },
+      "id": "note-taxonomy",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-04-taxonomy",
+  "tags": ["veritas-ai"]
+}

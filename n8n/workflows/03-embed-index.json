@@ -1,0 +1,28 @@
+{
+  "name": "03 - Embed + Index (Qdrant)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Embed + Index Stage (Layer 6: retrieval grounding)\n\n**Purpose:** Embed each new document via NVIDIA NIM and upsert into Qdrant; flag semantic near-duplicates.\n\n**TODO:**\n1. HTTP Request node or Execute Command: call `python/sidecar/qdrant_client.py::index_documents` for the batch (embeddings via NIM NeMo Retriever model).\n2. Execute Command: call `find_near_duplicates` per new doc; write matches to a `review_flags` note or table.\n3. Postgres node: store `qdrant_point_id` on each document row.\n\nRetrieval-only stage — nothing here assigns a cluster or label.",
+        "height": 380,
+        "width": 480
+      },
+      "id": "note-embed-index",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-03-embed-index",
+  "tags": ["veritas-ai"]
+}

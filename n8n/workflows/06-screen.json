@@ -1,0 +1,28 @@
+{
+  "name": "06 - Primary Research Screening",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Screening Stage\n\n**Purpose:** Flag which classified documents are primary research vs. surveys/reviews, so only primary sources feed synthesis.\n\n**TODO:**\n1. Code node: batch of 10 within each locked cluster.\n2. LLM node (structured output): `{doi, is_primary_research: bool, reason: string}`.\n3. Code node: validate boolean type + reason non-empty.\n4. Postgres node: update `documents.is_primary_research`, `screening_reason`.",
+        "height": 340,
+        "width": 460
+      },
+      "id": "note-screen",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-06-screen",
+  "tags": ["veritas-ai"]
+}

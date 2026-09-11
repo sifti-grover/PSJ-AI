@@ -1,0 +1,28 @@
+{
+  "name": "05 - Batch Classification (Consensus)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Classification Stage (Layers 1, 2, 4)\n\n**Purpose:** Assign every document to exactly one locked cluster, with two-model consensus.\n\n**TODO:**\n1. Code node: slice documents into batches of 10.\n2. Loop Over Items: one batch per iteration.\n3. LLM node A (e.g. OpenAI) + LLM node B (e.g. Anthropic or NIM model): both classify the same batch against the locked cluster IDs only (closed-set enum in the JSON Schema — no free text).\n4. Code node: compare A vs B per document.\n   - Agreement -> commit `cluster_id`.\n   - Disagreement -> flag doc for the human review tray, do not auto-resolve.\n5. Postgres node: insert into `consensus_votes`; update `documents.cluster_id`, `cluster_confidence`.\n\nEvery batch is logged to `batches` (raw prompt + raw response) for the audit trail.",
+        "height": 460,
+        "width": 520
+      },
+      "id": "note-classify",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-05-classify",
+  "tags": ["veritas-ai"]
+}

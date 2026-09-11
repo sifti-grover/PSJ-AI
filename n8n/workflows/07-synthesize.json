@@ -1,0 +1,28 @@
+{
+  "name": "07 - Synthesis (RAG-grounded)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Synthesis Stage (Layer 6 applied)\n\n**Purpose:** Generate differences/similarities/insight paragraph per cluster, grounded in retrieved chunks, always citeP-backed.\n\n**TODO:**\n1. Code node: batch primary-research docs by cluster, 10 at a time.\n2. Loop Over Items.\n3. Execute Command: `qdrant_client.py::retrieve_context` — top-k relevant chunks *within this batch only*.\n4. LLM node (structured output): produce `{differences, similarities, paragraph}`; every claim must cite a `citep` key present in the batch.\n5. Code node: extract citeP refs from the response and check each exists in `documents.citep` for this batch — reject/retry if not.\n6. Postgres node: insert into `insights`.",
+        "height": 420,
+        "width": 500
+      },
+      "id": "note-synthesize",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-07-synthesize",
+  "tags": ["veritas-ai"]
+}

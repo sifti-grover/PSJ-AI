@@ -1,0 +1,28 @@
+{
+  "name": "08 - Audit",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Audit Stage (Layer 3 final check + Layer 5)\n\n**Purpose:** Independently re-verify every citeP in every generated insight before the report is allowed to build.\n\n**TODO:**\n1. Execute Command node: `python3 python/sidecar/auditor.py --project-id {{project_id}} --dsn $POSTGRES_DSN`.\n2. IF node: `passed == true` -> continue to Report stage; else -> Wait node (human review) with the list of unmatched citations.\n\nThis stage runs in Python deliberately — it is the final, independent gate and must not share failure modes with the n8n Code-node validators upstream.",
+        "height": 360,
+        "width": 480
+      },
+      "id": "note-audit",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-08-audit",
+  "tags": ["veritas-ai"]
+}

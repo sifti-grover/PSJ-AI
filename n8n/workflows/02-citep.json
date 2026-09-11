@@ -1,0 +1,28 @@
+{
+  "name": "02 - Citation Key Resolution (citeP)",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Citation Stage (Layer 3: ground-truth citation validation)\n\n**Purpose:** Resolve each document's citation key from the uploaded .bib file. Lookup only — never generated.\n\n**TODO:**\n1. Execute Command / Code node: call `python/sidecar/bib_parser.py` to get the full key set for the project.\n2. Code node: slice documents into batches of 10 (never inline more in a prompt).\n3. Loop Over Items: one batch per iteration.\n4. LLM node (structured output): given batch metadata + candidate keys, return `{doi, citep_key}` pairs.\n5. Code node: validate every returned `citep_key` is in the ground-truth set. Reject and retry (×3) on any key not in the set.\n6. Postgres node: update `documents.citep`, `citep_status`.\n\nEvery batch call is logged to `batches` for the audit trail (Layer 5).",
+        "height": 460,
+        "width": 500
+      },
+      "id": "note-citep",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-02-citep",
+  "tags": ["veritas-ai"]
+}

@@ -1,0 +1,9 @@
+.env
+data/uploads/*
+!data/uploads/.gitkeep
+data/exports/*
+!data/exports/.gitkeep
+__pycache__/
+*.pyc
+n8n_data/
+.DS_Store

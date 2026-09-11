@@ -1,0 +1,28 @@
+{
+  "name": "09 - Report Export",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Report Stage\n\n**Purpose:** Deterministically merge audited insights into the final DOCX/LaTeX/PDF report with a PRISMA-style flow summary.\n\n**TODO:**\n1. Postgres node: fetch all clusters + insights for the project.\n2. Execute Command: `python3 python/sidecar/report_export.py --project-name \"...\" --out /data/exports/report.docx`.\n3. Respond to Chat Trigger / webhook with the download link or file.\n\nNo LLM call in this stage — pure deterministic merge of already-audited content.",
+        "height": 340,
+        "width": 460
+      },
+      "id": "note-report",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-09-report",
+  "tags": ["veritas-ai"]
+}

@@ -1,0 +1,10 @@
+pandas>=2.2
+numpy>=1.26
+scikit-learn>=1.4
+bibtexparser>=1.4
+qdrant-client>=1.9
+requests>=2.31
+python-dotenv>=1.0
+python-docx>=1.1
+matplotlib>=3.8
+psycopg2-binary>=2.9

@@ -1,0 +1,28 @@
+{
+  "name": "01 - Ingest",
+  "nodes": [
+    {
+      "parameters": {
+        "content": "## Ingest Stage\n\n**Purpose:** Receive a Scopus CSV export (and matching .bib) or a raw query, and load rows into `documents`.\n\n**TODO — build in this order:**\n1. Chat Trigger or Webhook node: accept file upload / query string.\n2. Code node: parse CSV, normalize columns (doi, title, authors, year, abstract).\n3. Code node: dedupe by DOI within this batch.\n4. Postgres node: insert into `documents` (status = INGESTED).\n5. Set node: pass project_id + doc count downstream.\n\nNo LLM call in this stage — pure deterministic parsing.",
+        "height": 420,
+        "width": 480
+      },
+      "id": "note-ingest",
+      "name": "Sticky Note",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [240, 280]
+    }
+  ],
+  "connections": {},
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "placeholder",
+  "meta": {
+    "instanceId": "placeholder"
+  },
+  "id": "placeholder-01-ingest",
+  "tags": ["veritas-ai"]
+}
