@@ -155,3 +155,43 @@ def retrieve_context(
     ).points
 
     return [r.id for r in results]
+def retrieve_context_with_payload(
+    client,
+    query: str,
+    batch_doc_ids: list[int],
+    top_k: int = 5,
+) -> list[dict]:
+    """Retrieve batch-restricted documents with metadata and context."""
+    vector = embed_texts([query])[0]
+
+    result = client.query_points(
+        collection_name=COLLECTION,
+        query=vector,
+        limit=top_k,
+        with_payload=True,
+        query_filter={
+            "must": [
+                {
+                    "has_id": batch_doc_ids
+                }
+            ]
+        },
+    )
+
+    output = []
+
+    for point in result.points:
+        payload = point.payload or {}
+
+        output.append(
+            {
+                "document_id": int(point.id),
+                "score": float(point.score),
+                "doi": payload.get("doi"),
+                "title": payload.get("title"),
+                "authors": payload.get("authors"),
+                "text": payload.get("text"),
+            }
+        )
+
+    return output
