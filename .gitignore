@@ -7,3 +7,7 @@ __pycache__/
 *.pyc
 n8n_data/
 .DS_Store
+.venv/
+
+backups/*
+!backups/.gitkeep
